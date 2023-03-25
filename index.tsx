@@ -2,19 +2,19 @@ import "./index.css";
 
 import { MouseEventHandler, useRef, useState } from "react";
 
-interface ReactVideoZoomProps {
+type ReactVideoZoomProps = {
   src: string;
   zoom: number;
   refs: ReactVideoZoomRefs;
   width?: number;
   loop?: boolean;
   muted?: boolean;
-}
+};
 
-interface ReactVideoZoomRefs {
+type ReactVideoZoomRefs = {
   mainVideoRef: React.RefObject<HTMLVideoElement>;
   zoomVideoRef: React.RefObject<HTMLVideoElement>;
-}
+};
 
 export const playReactVideoZoom = ({
   mainVideoRef,

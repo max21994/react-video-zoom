@@ -1,0 +1,24 @@
+{
+  "name": "react-video-zoom",
+  "version": "1.0.0",
+  "description": "React Video Zoom Component",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max21994/react-video-zoom.git"
+  },
+  "keywords": [
+    "react",
+    "video",
+    "zoom"
+  ],
+  "author": "Max Gajek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max21994/react-video-zoom/issues"
+  },
+  "homepage": "https://github.com/max21994/react-video-zoom#readme"
+}
