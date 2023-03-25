@@ -1,0 +1,24 @@
+.video-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.video-container video {
+    display: block;
+    cursor: none;
+}
+
+.video-container .zoom-container {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border: 3px solid black;
+}
+
+.video-container .zoom-container video {
+}
