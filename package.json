@@ -1,6 +1,6 @@
 {
   "name": "react-video-zoom",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Video Zoom Component",
   "main": "index.tsx",
   "scripts": {
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/max21994/react-video-zoom/issues"
   },
-  "homepage": "https://github.com/max21994/react-video-zoom#readme"
+  "homepage": "https://github.com/max21994/react-video-zoom#readme",
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
 }
