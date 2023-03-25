@@ -1,10 +1,11 @@
 {
   "name": "react-video-zoom",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "React Video Zoom Component",
-  "main": "index.tsx",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && cp package.json README.md src/index.css ./dist"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,11 @@
   },
   "homepage": "https://github.com/max21994/react-video-zoom#readme",
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
     "typescript": "^5.0.2"
   }
 }
