@@ -6,7 +6,7 @@ React component for magnifying glass circle on a video when hovering.
 
 ## Demo
 
-[Demo](https://max21994.github.io/react-video-zoom.github.io/)
+[Demo](https://react-video-zoom-github-io.vercel.app/)
 
 ## Install
 
@@ -59,13 +59,13 @@ function App() {
 | loop     | boolean            | Optional    | When true, video will play on loop |
 | muted    | boolean            | Optional    | When true, video will be muted     |
 
-## `playReactVideoZoom(refs)` and `pauseReactVideoZoom(refs)` helper functions
+## `playReactVideoZoom(refs)` and `pauseReactVideoZoom(refs)` playback control functions
 
-The package also exports 2 helper functions for playing and pausing the videos in sync. Object `refs` of type `ReactVideoZoomRefs` must be passed as an argument to both of them.
+The package also exports 2 playback control functions for playing and pausing the videos in sync. Object `refs` of type `ReactVideoZoomRefs` must be passed as an argument to both of them.
 
 ## `ReactVideoZoomRefs` type
 
-The `refs` object that is passed to `<ReactVideoZoom />` component and helper functions must be of the following type:
+The `refs` object that is passed to `<ReactVideoZoom />` component and playback control functions must be of the following type:
 
 ```typescript
 type ReactVideoZoomRefs = {
