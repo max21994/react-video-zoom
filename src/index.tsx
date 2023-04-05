@@ -92,7 +92,7 @@ export const ReactVideoZoom = ({
       onTouchMove={(e) =>
         onPointerMove({
           clientX: e.touches[0].clientX,
-          clientY: e.touches[0].clientY,
+          clientY: e.touches[0].clientY - 150,
         })
       }
       onTouchStart={() => setZoomOn(true)}
