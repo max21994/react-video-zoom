@@ -1,6 +1,6 @@
 import "./index.css";
 
-import { MouseEventHandler, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 type ReactVideoZoomProps = {
   src: string;
@@ -57,12 +57,18 @@ export const ReactVideoZoom = ({
 
   const { mainVideoRef, zoomVideoRef } = refs;
 
-  const onMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
+  const onPointerMove = ({
+    clientX,
+    clientY,
+  }: {
+    clientX: number;
+    clientY: number;
+  }) => {
     if (containerRef.current) {
       const containerRect = containerRef.current.getBoundingClientRect();
       setMousePosition({
-        left: e.clientX - containerRect.left,
-        top: e.clientY - containerRect.top,
+        left: clientX - containerRect.left,
+        top: clientY - containerRect.top,
       });
       setContainerRect({
         width: containerRect.width,
@@ -75,14 +81,27 @@ export const ReactVideoZoom = ({
     <div
       ref={containerRef}
       className="video-container"
-      onMouseMove={onMouseMove}
+      onMouseMove={(e) =>
+        onPointerMove({
+          clientX: e.clientX,
+          clientY: e.clientY,
+        })
+      }
       onMouseEnter={() => setZoomOn(true)}
       onMouseLeave={() => setZoomOn(false)}
+      onTouchMove={(e) =>
+        onPointerMove({
+          clientX: e.touches[0].clientX,
+          clientY: e.touches[0].clientY,
+        })
+      }
+      onTouchStart={() => setZoomOn(true)}
+      onTouchEnd={() => setZoomOn(false)}
     >
       <video
         src={src}
         ref={mainVideoRef}
-        width={width}
+        width={width ? width : "100%"}
         loop={loop}
         muted={muted}
       />

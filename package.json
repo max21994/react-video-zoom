@@ -1,7 +1,7 @@
 {
   "name": "react-video-zoom",
-  "version": "1.0.8",
-  "description": "React Video Zoom Component",
+  "version": "1.0.9",
+  "description": "React component for magnifying glass circle on a video when hovering.",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/max21994/react-video-zoom/issues"
   },
-  "homepage": "https://github.com/max21994/react-video-zoom#readme",
+  "homepage": "https://react-video-zoom-github-io.vercel.app",
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
