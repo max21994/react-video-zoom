@@ -52,29 +52,37 @@ export const ReactVideoZoom = ({
   const [containerRect, setContainerRect] = useState({
     width: 0,
     height: 0,
+    left: 0,
+    top: 0,
   });
   const [isZoomOn, setZoomOn] = useState(false);
 
   const { mainVideoRef, zoomVideoRef } = refs;
 
-  const onPointerMove = ({
+  const startZoom = () => {
+    if (containerRef.current) {
+      const containerRect = containerRef.current.getBoundingClientRect();
+      setContainerRect({
+        width: containerRect.width,
+        height: containerRect.height,
+        left: containerRect.left,
+        top: containerRect.top,
+      });
+      setZoomOn(true);
+    }
+  };
+
+  const setPosition = ({
     clientX,
     clientY,
   }: {
     clientX: number;
     clientY: number;
   }) => {
-    if (containerRef.current) {
-      const containerRect = containerRef.current.getBoundingClientRect();
-      setMousePosition({
-        left: clientX - containerRect.left,
-        top: clientY - containerRect.top,
-      });
-      setContainerRect({
-        width: containerRect.width,
-        height: containerRect.height,
-      });
-    }
+    setMousePosition({
+      left: clientX - containerRect.left,
+      top: clientY - containerRect.top,
+    });
   };
 
   return (
@@ -82,20 +90,34 @@ export const ReactVideoZoom = ({
       ref={containerRef}
       className="video-container"
       onMouseMove={(e) =>
-        onPointerMove({
+        setPosition({
           clientX: e.clientX,
           clientY: e.clientY,
         })
       }
-      onMouseEnter={() => setZoomOn(true)}
+      onMouseEnter={(e) => {
+        startZoom();
+        setPosition({
+          clientX: e.clientX,
+          clientY: e.clientY,
+        });
+      }}
       onMouseLeave={() => setZoomOn(false)}
-      onTouchMove={(e) =>
-        onPointerMove({
+      onTouchMove={(e) => {
+        e.preventDefault();
+        setPosition({
           clientX: e.touches[0].clientX,
-          clientY: e.touches[0].clientY - 150,
-        })
-      }
-      onTouchStart={() => setZoomOn(true)}
+          clientY: e.touches[0].clientY - 80,
+        });
+      }}
+      onTouchStart={(e) => {
+        e.preventDefault();
+        startZoom();
+        setPosition({
+          clientX: e.touches[0].clientX,
+          clientY: e.touches[0].clientY - 80,
+        });
+      }}
       onTouchEnd={() => setZoomOn(false)}
     >
       <video
@@ -104,6 +126,7 @@ export const ReactVideoZoom = ({
         width={width ? width : "100%"}
         loop={loop}
         muted={muted}
+        playsInline
       />
       <div
         className="zoom-container"
@@ -125,6 +148,7 @@ export const ReactVideoZoom = ({
           ref={zoomVideoRef}
           muted
           loop={loop}
+          playsInline
         />
       </div>
     </div>
